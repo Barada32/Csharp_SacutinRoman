@@ -10,10 +10,7 @@ namespace CSLight
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Привет,мир!");
-            Console.ReadLine();
-
-            float f = 5.7f;
+           
         }
     }
 }
