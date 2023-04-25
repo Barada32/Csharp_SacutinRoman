@@ -1,7 +1,9 @@
-﻿//#define HI
-//#define INTERPOLATION
-//#define ARIFMETIC
-//#define VARIABLES_DESCRIPTION
+﻿//#define VARIABLES_DESCRIPTION_1
+//#define ARIFMETIC_2
+//#define CONCATENATE_3
+//#define INTERPOLATION_4
+//#define COVERTING_STRING_TO_INT_5
+//#define COVERTING_INT_TO_FLOAT_5
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,13 +18,13 @@ namespace CSLight
         static void Main(string[] args)
         {
 
-#if VARIABLES_DESCRIPTION
+#if VARIABLES_DESCRIPTION_1
             byte b;//0 до 255
             sbyte sb;//-128 до 127
-            short s;//-32768 до 32768
+            short s;//-32768 до 32768  2^16
             ushort us;//0 до 65535
-            int i;//-2147483648 до 2147483648
-            long l;//0 до 4294672295
+            int i;//-2147483648 до 2147483648 2^32
+            long l;//0 до 4294672295 2*64
             ulong ul = ulong.MaxValue;
             //Числа с плавающей точкой
             double d;
@@ -41,7 +43,7 @@ namespace CSLight
             //составные имена сamelCase или waitingTime  
 #endif
 
-#if ARIFMETIC
+#if ARIFMETIC_2
             //+-*/%
             //int result = 5 + 10 * 3;
             //Console.WriteLine(result);
@@ -51,15 +53,14 @@ namespace CSLight
             Console.WriteLine(accesIsAllowed); 
 #endif
 
-#if HI
+#if CONCATENATE_3
             string greeting = "Привет";
             string name = "Валентин";
             string message = greeting+" омлет " + name;
             Console.WriteLine(message+", рад тебя видеть!");   
 #endif
 
-
-#if INTERPOLATION
+#if INTERPOLATION_4
             int age = 27;
             string name = "Valentin";
             Console.WriteLine("Привет тебе исполнится " + (age + 1));
@@ -67,8 +68,24 @@ namespace CSLight
             Console.WriteLine($"Ваше имя {name} вам {age} лет"); 
 #endif
 
+#if COVERTING_STRING_TO_INT_5
+            int age;
+            string input = "15";
+            age = Convert.ToInt32(input);
+            Console.WriteLine(age); 
+#endif
+#if COVERTING_INT_TO_FLOAT_5
+            float result;
+            int x = 5, y = 2;
+            result = Convert.ToSingle(x) / y;
+            Console.WriteLine(result);
+#endif
 
-
+            int trigger = 1;
+            Convert.ToBoolean(trigger);
+            Console.WriteLine(trigger);
+            int reconvert=Convert.ToInt32(trigger);
+            Console.WriteLine(trigger);
         }
     }
 }
