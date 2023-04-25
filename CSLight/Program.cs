@@ -1,5 +1,6 @@
 ﻿//#define HI
 //#define INTERPOLATION
+//#define ARIFMETIC
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,15 @@ namespace CSLight
         static void Main(string[] args)
         {
 
+#if ARIFMETIC
+            //+-*/%
+            //int result = 5 + 10 * 3;
+            //Console.WriteLine(result);
+            //=!= > < <= >=
+            int age = 17;
+            bool accesIsAllowed = age >= 18;
+            Console.WriteLine(accesIsAllowed); 
+#endif
 
 #if HI
             string greeting = "Привет";
