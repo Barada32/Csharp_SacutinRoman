@@ -21,10 +21,10 @@ namespace CSLight
 #if VARIABLES_DESCRIPTION_1
             byte b;//0 до 255
             sbyte sb;//-128 до 127
-            short s;//-32768 до 32768  2^16
+            short s;//-32768 до 32768  Convert.ToInt16
             ushort us;//0 до 65535
-            int i;//-2147483648 до 2147483648 2^32
-            long l;//0 до 4294672295 2*64
+            int i;//-2147483648 до 2147483648 Convert.ToInt32
+            long l;//0 до 4294672295 Convert.ToInt64
             ulong ul = ulong.MaxValue;
             //Числа с плавающей точкой
             double d;
@@ -81,11 +81,11 @@ namespace CSLight
             Console.WriteLine(result);
 #endif
 
-            int trigger = 1;
-            Convert.ToBoolean(trigger);
-            Console.WriteLine(trigger);
-            int reconvert=Convert.ToInt32(trigger);
-            Console.WriteLine(trigger);
+            //40 минута видео перерыв
+            int age = 27;
+            string name = "Валентин";
+            Console.WriteLine("Ваше имя: " + name + " вам " + age + "лет!");
+            Console.WriteLine($"Ваше имя: {name} вам {age} лет!") ;
         }
     }
 }
