@@ -4,6 +4,8 @@
 //#define INTERPOLATION_4
 //#define COVERTING_STRING_TO_INT_5
 //#define COVERTING_INT_TO_FLOAT_5
+//#define COVERTING_INT_TO_BOOL_5_3
+//#define RUSSIAN_LANGUAGE_6
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,24 +70,39 @@ namespace CSLight
             Console.WriteLine($"Ваше имя {name} вам {age} лет"); 
 #endif
 
-#if COVERTING_STRING_TO_INT_5
+#if COVERTING_STRING_TO_INT_5_1
             int age;
             string input = "15";
             age = Convert.ToInt32(input);
             Console.WriteLine(age); 
 #endif
-#if COVERTING_INT_TO_FLOAT_5
+#if COVERTING_INT_TO_FLOAT_5_2
             float result;
             int x = 5, y = 2;
             result = Convert.ToSingle(x) / y;
             Console.WriteLine(result);
 #endif
 
-            //40 минута видео перерыв
-            int age = 27;
-            string name = "Валентин";
-            Console.WriteLine("Ваше имя: " + name + " вам " + age + "лет!");
-            Console.WriteLine($"Ваше имя: {name} вам {age} лет!") ;
+#if COVERTING_INT_TO_BOOL_5_3
+            int trigger = 1;
+            bool triggerInBoolean = Convert.ToBoolean(trigger);
+            Console.WriteLine(triggerInBoolean);
+            int reconvert = Convert.ToInt32(triggerInBoolean);
+            Console.WriteLine(reconvert); 
+#endif
+
+#if RUSSIAN_LANGUAGE_6
+            //Console.WriteLine();
+            //Console.ReadKey();
+            Console.InputEncoding = Encoding.Unicode;
+            Console.OutputEncoding = Encoding.Unicode;
+            string name;
+            name = Console.ReadLine();
+            Console.WriteLine(name); 
+#endif
+
+            //47:39 ENCODIONG
+
         }
     }
 }
