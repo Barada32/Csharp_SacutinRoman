@@ -6,6 +6,8 @@
 //#define COVERTING_INT_TO_FLOAT_5
 //#define COVERTING_INT_TO_BOOL_5_3
 //#define RUSSIAN_LANGUAGE_6
+//#define INCREMENT_DECREMENT
+#define INCREMENT_DECREMENT_7
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,16 +94,48 @@ namespace CSLight
 #endif
 
 #if RUSSIAN_LANGUAGE_6
-            //Console.WriteLine();
-            //Console.ReadKey();
+            //Console.WriteLine();//ввод с новой строки
+            //Console.ReadKey();//ожидание нажатия клавиши
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
             string name;
+            Console.Write( "Введите ваше имя:  ");//ввод сразу после сообщения
             name = Console.ReadLine();
-            Console.WriteLine(name); 
+            Console.WriteLine($"Ваше имя: {name}");
+            Console.Write("Введите ваш возраст:  ");
+            int age  = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"Ваш возраст: {age} лет!");
+
 #endif
 
-            //47:39 ENCODIONG
+#if INCREMENT_DECREMENT_7
+            Console.InputEncoding = Encoding.Unicode;
+            Console.OutputEncoding = Encoding.Unicode;
+            //int i = 0;
+            //Console.WriteLine(i++ + ++i);// у инкремента и декремента  высший приоритет
+            float health;
+            int armor;
+            int damage;
+            int precentConverter = 100;
+            Console.WriteLine("Введите количкество здоровья: ");
+            health = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите количкество брони: ");
+            armor = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите количкество урона: ");
+            damage = Convert.ToInt32(Console.ReadLine());
+            health -= Convert.ToSingle(damage)/ precentConverter * armor ;
+            Console.WriteLine($"Вам нанесли{damage} урона.У вас оста" +
+                $"лось {health} здоровья.");
+
+
+#endif
+
+
+
+
+
+
+
 
         }
     }
