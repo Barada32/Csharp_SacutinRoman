@@ -7,7 +7,7 @@
 //#define COVERTING_INT_TO_BOOL_5_3
 //#define RUSSIAN_LANGUAGE_6
 //#define INCREMENT_DECREMENT
-#define INCREMENT_DECREMENT_7
+//#define INCREMENT_DECREMENT_7
 using System;
 using System.Collections.Generic;
 using System.Linq;
