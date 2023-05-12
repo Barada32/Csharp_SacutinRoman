@@ -53,11 +53,23 @@ namespace CSLight
 
 #endif
 #if RANDOM_3
+            int number;
+            int lower, higher;
+            int tiresCount = 5;
+            int userInput;
             Random random = new Random();
-            int value;
-            while (true)
-            { 
-                value = random.Next(0,10);
+
+            number = random.Next(0, 101);
+            lower = random.Next(number - 10, number);
+            higher = random.Next(number + 1, number + 10);
+            Console.WriteLine($"Мы загадали число от 0 до 100 и оно больше чем {lower} " + $"но больше чем {higher}.");
+            Console.WriteLine($"Что это за число?У Вас осталось {tiresCount} попыток");
+            while (tiresCount-- > 0)
+            {
+                Console.WriteLine("Ваш ответ: ");
+                userInput = Convert.ToInt32() ;
+                //2:15
+                value = random.Next(0, 10);
                 Console.WriteLine(value);
                 Console.ReadKey();
             }
