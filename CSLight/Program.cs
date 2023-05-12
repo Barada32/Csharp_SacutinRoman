@@ -1,4 +1,6 @@
-﻿
+﻿//#define BANK_VKLAD_1
+//#define DRAKA_2
+#define RANDOM_3
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,7 @@ namespace CSLight
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
 
+#if BANK_VKLAD_1
             float money;
             int years;
             int percent;
@@ -28,9 +31,37 @@ namespace CSLight
             for (int i = 0; i < years; i++)
             {
                 money += money / 100 * percent;
-                Console.WriteLine("Через "+ (i+1) + "году у вас " + money);
+                Console.WriteLine("Через " + (i + 1) + "году у вас " + money);
+                Console.ReadKey();
+            } 
+#endif
+
+#if DRAKA_2
+
+            int playerHealth = 100 ;
+            int playerDamage = 10;
+            int enemyHealth = 100;
+            int enemyDamage = 10;
+            while (playerHealth>0&&enemyHealth>0)
+            {
+                playerHealth-=enemyDamage; 
+                enemyHealth-=playerDamage ;
+                Console.WriteLine(playerHealth+" игрок.");
+                Console.WriteLine(enemyHealth+" враг.");
+            }
+            if (playerHealth<=0&&enemyHealth<=0) { Console.WriteLine("Ничья"); }
+
+#endif
+#if RANDOM_3
+            Random random = new Random();
+            int value;
+            while (true)
+            { 
+                value = random.Next(0,10);
+                Console.WriteLine(value);
                 Console.ReadKey();
             }
+#endif
 
 
 
