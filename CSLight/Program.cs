@@ -67,12 +67,26 @@ namespace CSLight
             while (tiresCount-- > 0)
             {
                 Console.WriteLine("Ваш ответ: ");
-                userInput = Convert.ToInt32() ;
-                //2:15
-                value = random.Next(0, 10);
-                Console.WriteLine(value);
-                Console.ReadKey();
+                userInput = Convert.ToInt32(Console.ReadLine()) ;
+                if (userInput == number)
+                {
+                    Console.WriteLine("Вы правы, это было число " + number + ".");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Не верно попробуйте еще раз.");
+                }
             }
+            if (tiresCount < 0) 
+            { 
+            Console.WriteLine("Вы проиграли,увы но повезет в следующий раз.Это было число" + number + ".");
+            }
+
+
+
+
+
 #endif
 
 
