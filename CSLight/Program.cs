@@ -1,6 +1,7 @@
 ﻿//#define BANK_VKLAD_1
 //#define DRAKA_2
-#define RANDOM_3
+//#define RANDOM_3
+#define  FIGHT_4
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,6 +88,30 @@ namespace CSLight
 
 
 
+#endif
+#if FIGHT_4
+            Random rand = new Random();
+
+            float health1 = rand.Next(30, 50);
+            int damage1 = rand.Next(20, 25);
+            int armor1 = rand.Next(25, 65);
+
+            int armor2 = rand.Next(155, 250);
+            int damage2 = rand.Next(21, 25);
+            float health2 = rand.Next(133, 144);
+            Console.WriteLine($"Гладиатор 1 ={health1} здоровья ,{damage1} наносимый урон, {armor1} броня");
+            Console.WriteLine($"Гладиатор 2 ={health2} здоровья ,{damage2} наносимый урон, {armor2} броня");
+            while (health1 > 0 && health2 > 0)
+            {
+                health1 -=Convert.ToSingle(rand.Next(0, damage2 + 1)) / 100 * armor1;
+                health2 -= Convert.ToSingle(rand.Next(0, damage1 + 1)) / 100 * armor2;
+                Console.WriteLine("Здоровье гладиатора 1: "+health1);
+                Console.WriteLine("Здоровье гладиатора 2: "+health2);
+                if (health1 <= 0 &&health2 <= 0) 
+                { Console.WriteLine("Ничья.Оба погибли"); }
+                else if (health1 <= 0) { Console.WriteLine("Гладиатор 1 пал"); }
+                else if (health2 <= 0) { Console.WriteLine("Гладиатор 2 пал"); }
+            }
 #endif
 
 
