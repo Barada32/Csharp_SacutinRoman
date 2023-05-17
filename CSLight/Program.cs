@@ -1,7 +1,8 @@
 ﻿//#define BANK_VKLAD_1
 //#define DRAKA_2
 //#define RANDOM_3
-#define  FIGHT_4
+//#define  FIGHT_4
+#define WORK_WITH_CONSOLE_5
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -113,8 +114,22 @@ namespace CSLight
                 else if (health2 <= 0) { Console.WriteLine("Гладиатор 2 пал"); }
             }
 #endif
-
-
+#if WORK_WITH_CONSOLE_5
+            Console.WindowHeight = 12;
+            Console.WindowWidth = 35;
+            Console.WriteLine("Привет анд");
+            Console.ReadKey();
+            Console.Clear();
+            Console.SetCursorPosition(5, 10);
+            Console.ReadKey();
+           
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.BackgroundColor= ConsoleColor.Yellow;
+            Console.Clear();
+            Console.WindowHeight = 10;
+            Console.WindowWidth = 35;
+            Console.WriteLine("Привет FFFFFFFFFFFFFF");
+#endif
 
         }
     }
