@@ -243,11 +243,11 @@ namespace CSLight
             {for (int j = 0; j < array.GetLength(1); j++)
                 {
 
-                    Console.WriteLine($"Значение элемента{j} массива в строке {i}  равно " + array[i,j] );
+                    Console.WriteLine($"Значение элемента {j} массива в строке {i}  равно " + array[i,j] );
                 }
             
             }
-
+            //3:30
 
         }
     }
