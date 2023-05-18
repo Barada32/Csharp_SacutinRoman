@@ -2,7 +2,14 @@
 //#define DRAKA_2
 //#define RANDOM_3
 //#define  FIGHT_4
-#define WORK_WITH_CONSOLE_5
+//#define WORK_WITH_CONSOLE_5
+
+//#define ARRAYS_6_1
+//#define ARRAYS_6_2
+//#define ARRAYS_MIN_MAX_7
+//#define TIKET_PROGRAMM_8
+#define D2_ARRAYS
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -130,6 +137,117 @@ namespace CSLight
             Console.WindowWidth = 35;
             Console.WriteLine("Привет FFFFFFFFFFFFFF");
 #endif
+
+#if ARRAYS_6_1
+            int[] cucubers = new int[10];
+
+            Random random = new Random();
+
+            Console.WriteLine($"Длинна массива " + cucubers.Length);
+            for (int i = 0; i < cucubers.Length; i++)
+            {
+                cucubers[i] = random.Next(0, 101);
+                Console.Write(cucubers[i] + " ");
+
+            } 
+#endif //рандомное заполнение массива и вывод на экран
+
+#if ARRAYS_6_2
+
+            int[] cucubers = { 1,2,4,5};
+            int sum=0;
+          
+
+            Console.WriteLine($"Длинна массива " + cucubers.Length);
+            for (int i = 0; i < cucubers.Length; i++)
+            {
+               
+                Console.WriteLine("Значение элемента на позиции "+i+" равно "+ cucubers[i] + " ");
+                sum += cucubers[i];
+               
+            } 
+            Console.Write("сумма массива равна " + sum);
+
+#endif //ручное заполнение
+
+#if ARRAYS_MIN_MAX_7
+            int[] arr = { 1, 2, 4, 5 };
+            int maxElement = int.MinValue;
+            int minElement = int.MaxValue;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (maxElement < arr[i]  ) { maxElement = arr[i]; }
+                if (arr[i] < minElement) { minElement = arr[i]; }
+            }
+            Console.WriteLine("Минимальный элемент = " + minElement);
+            Console.WriteLine("Максимальный элемент = "+ maxElement);
+
+#endif
+
+#if TIKET_PROGRAMM_8
+
+
+            int[] sectors = { 6, 28, 15, 15, 17 };
+            bool isOpen = true;
+            while (isOpen == true)
+            {
+                Console.SetCursorPosition(0, 15);
+                for (int i = 0; i < sectors.Length; i++)
+                {
+                    Console.WriteLine($"В секторе {i + 1} свободно {sectors[i]} мест");
+                }
+                Console.SetCursorPosition(0, 0);
+                Console.WriteLine("Регистрация рейса.");
+                Console.WriteLine("\n\n1- забронировать места\n \n2 - выход из программы\n");
+                Console.Write("Введите номер команды.");
+                switch (Convert.ToInt32(Console.ReadLine()))
+                {
+                    case 1:
+                        int userSector, userPlaceAmount;
+                        Console.Write("В каком секторе вы хотите лететь?");
+                        userSector = Convert.ToInt32(Console.ReadLine()) - 1;
+                        if (sectors.Length <= userSector || userSector < 0)
+                        {
+                            Console.WriteLine("Такого сектора не существует.");
+                            break;
+                        }
+
+                        Console.Write("Сколько мест вы хотите забронировать?");
+                        userPlaceAmount = Convert.ToInt32(Console.ReadLine());
+                        if (userPlaceAmount < 0) { Console.WriteLine("Неверное количество мест"); break; }
+                        if (sectors[userSector] < userPlaceAmount)
+                        {
+
+                            Console.WriteLine($"В секторе {userSector} недостаточно мест." +
+                                $"Остаток {sectors[userSector]} ");
+                            break;
+                        }
+                        sectors[userSector] -= userPlaceAmount;
+                        Console.WriteLine("Бронирование успешно!");
+                        break;
+                    case 2:
+                        isOpen = false;
+                        break;
+
+
+                }
+                Console.ReadKey();
+                Console.Clear();
+
+            } 
+#endif //бронирование мест по секторам в массиве 
+
+
+            int[,] array = new int[2, 3] { { 1, 2, 3 }, { 4, 5, 6 } };
+            for (int i = 0; i < array.GetLength(0); i++)
+            {for (int j = 0; j < array.GetLength(1); j++)
+                {
+
+                    Console.WriteLine($"Значение элемента{j} массива в строке {i}  равно " + array[i,j] );
+                }
+            
+            }
+
 
         }
     }
