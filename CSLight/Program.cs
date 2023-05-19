@@ -9,6 +9,7 @@
 //#define TIKET_PROGRAMM_8
 //#define D2_ARRAYS_9
 //#define LIBRARY_10
+//#define ARRAY_EXTENSHION_11
 
 using System;
 using System.CodeDom.Compiler;
@@ -320,21 +321,23 @@ namespace CSLight
                 Console.Clear();\
                 }
 #endif
+#if ARRAY_EXTENSHION_11
             int[] bag = new int[1];
             bag[0] = 12;
-            int[] bag2 = new int[bag.Length+1];
-            for (int i = 0; i < bag.Length; i++) 
+            int[] bag2 = new int[bag.Length + 1];
+            for (int i = 0; i < bag.Length; i++)
             {
                 bag2[i] = bag[i];
-                Console.WriteLine(bag[i]+"Первый\n");
+                Console.WriteLine(bag[i] + "Первый\n");
             }
             bag2[bag2.Length - 1] = 56;
             bag = bag2;
-            for (int i = 0;i < bag.Length; i++)
+            for (int i = 0; i < bag.Length; i++)
             {
-                Console.WriteLine(bag[i]+"Второй");
-            }
-            
+                Console.WriteLine(bag[i] + "Второй");
+            } 
+#endif
+
 
         }
     }
