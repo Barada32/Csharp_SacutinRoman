@@ -1,6 +1,6 @@
 ﻿//#define ZMEIKA_S_SUMKOI_1
 //#define RANGE_BASED_FOR_2
-#define FUNCTIONS_3
+//#define FUNCTIONS_3
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -133,7 +133,6 @@ namespace CSLight
             Console.WriteLine("Странно.");
             WriteError("Инет не оплачен ", symbol: '@');
 
-
         }
 
         static void WriteError(string text, ConsoleColor color = ConsoleColor.Red, char symbol = '!')
@@ -143,24 +142,12 @@ namespace CSLight
             Console.WriteLine(symbol + "_" + text);
             Console.ForegroundColor = defaltColor;
         }
-#endif
-#if FUNCTION_RETUR_4
-
-        int j = 3, j2 = 3, sum = 0;
-
-        sum = Sum(j, j2);
-        Console.WriteLine(sum);
+#endif//настройка функции обязательные и необязательные параметры( пример организация ошибок)
 
 
-
+            //4:34
 
 
         }
-    static int Sum(int x, int y) { int sum = x + y; return sum; } 
-#endif
-
-
-
-
     }
 }
