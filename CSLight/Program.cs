@@ -1,6 +1,7 @@
 ﻿//#define ZMEIKA_S_SUMKOI_1
 //#define RANGE_BASED_FOR_2
 //#define FUNCTIONS_3
+//#define REF_OUT_4
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -144,10 +145,39 @@ namespace CSLight
         }
 #endif//настройка функции обязательные и необязательные параметры( пример организация ошибок)
 
+#if REF_OUT_4
 
-            //4:34
+            int sum, x = 1, y = 2;
+            Add(out sum, x, y);
+            Console.WriteLine(sum);
 
 
         }
+
+        static void Add(out int sum, int x, int y) { sum = x + y; }
+        //созданы для возврата более одного значения 
+
+        //ref должно быть и в функции и в вызове и они должны быть инициализированы ОБЯЗАТЕЛЬНО
+        //передает ссылку на область памяти где хранится переменная.
+
+
+
+        //out можно не инициализировать создает сама люласть памяти и возвращает ссылку  
+#endif
+
+
+
+            int[] array = new int[10];
+            EditArray(array, 3, 5);
+            Console.WriteLine(array[2]);
+
+        }
+            static void EditArray(int[] array,int index,int value)
+            {
+                array[index] = value;
+
+            }
+            
+
     }
 }
