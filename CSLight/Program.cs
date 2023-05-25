@@ -2,6 +2,7 @@
 //#define RANGE_BASED_FOR_2
 //#define FUNCTIONS_3
 //#define REF_OUT_4
+//#define DYNAMIC_ARRAY_5
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -166,18 +167,23 @@ namespace CSLight
 #endif
 
 
+#if DYNAMIC_ARRAY_5
 
-            int[] array = new int[10];
-            EditArray(array, 3, 5);
-            Console.WriteLine(array[2]);
+            int[] array = new int[5];
+            array = EditArray(array, 9, 5, 10);
+            Console.WriteLine(array[9]);
 
         }
-            static void EditArray(int[] array,int index,int value)
-            {
-                array[index] = value;
+        static int[] EditArray(int[] array, int index, int value, int a)
+        {
 
-            }
-            
+            array = new int[a];
+            array[index] = value;
+            return array;
 
+        } 
+#endif
+
+        }  
     }
 }
