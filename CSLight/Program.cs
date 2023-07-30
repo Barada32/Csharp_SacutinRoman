@@ -4,7 +4,11 @@
 //#define REF_OUT_4
 //#define DYNAMIC_ARRAY_5
 //#define RESIZE_ARRAY_OVERLOADING_6
-#define HEALTH_MANA_BAR_7
+//#define HEALTH_MANA_BAR_7
+//#define PAC_MAN_8_1
+#define PAC_MAN_8_2
+#define PAC_MAN_METHODS_8_2
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +16,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.IO;
 
 namespace CSLight
 {
@@ -264,7 +269,59 @@ namespace CSLight
 
 
 #endif
+#if PAC_MAN_8_1
+            //считывание данных из файла txt
+            char[,] map = null;
+            string[] file = File.ReadAllLines("map.txt");//"C:\Users\barad\source\repos\Csharp_SacutinRoman\CSLight\obj\Debug\map.txt"
+            Console.WriteLine(file[0]);
+
+#endif
+#if PAC_MAN_8_2
+
+            char[,] map = ReadMap("map.txt");
+            DrawMap(map);
+
+#endif
 
 
+        }
+#if PAC_MAN_METHODS_8_2
+        private static char[,] ReadMap(string path)
+        {
+            string[] file = File.ReadAllLines("map.txt");
+            char[,] map = new char[GetMaxLengthOfLine(file), file.Length];
+
+            for (int x = 0; x < map.GetLength(0); x++)
+            {
+                for (int y = 0; y < map.GetLength(1); y++)
+                { map[x, y] = file[y][x]; }
+
+            }
+            return map;
+        }
+
+        private static int GetMaxLengthOfLine(string[] lines)
+        {
+            int maxLength = lines[0].Length;
+            foreach (var line in lines)
+
+                if (line.Length > maxLength)
+                    maxLength = line.Length;
+
+
+            return maxLength;
+        }
+        private static void DrawMap(char[,] map)
+        {
+            for (int y = 0; y < map.GetLength(1); y++)
+            {
+                for (int x = 0; x < map.GetLength(0); x++)
+                {
+                    Console.Write(map[x, y]);
+                }
+                Console.Write("\n");
+            }
+        }
+#endif
     }
 }
