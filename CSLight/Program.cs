@@ -17,6 +17,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.IO;
+using System.Threading;
+using System.Data;
 
 namespace CSLight
 {
@@ -277,9 +279,32 @@ namespace CSLight
 
 #endif
 #if PAC_MAN_8_2
-
+            Console.CursorVisible = false;
             char[,] map = ReadMap("map.txt");
-            DrawMap(map);
+
+            ConsoleKeyInfo pressedKey = new ConsoleKeyInfo('w', ConsoleKey.W, false, false, false);
+
+            int pacmanX = 1;
+            int pacmanY = 1;
+            while (true)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Blue;
+                DrawMap(map);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.SetCursorPosition(pacmanX, pacmanY);
+                Console.Write("@");
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.SetCursorPosition(11, 1);
+                Console.Write(pressedKey.KeyChar);
+                pressedKey = Console.ReadKey();
+
+                HandleInput(pressedKey, ref pacmanX, ref pacmanY,map);
+
+            }
+
+            //5_08
 
 #endif
 
@@ -321,6 +346,27 @@ namespace CSLight
                 }
                 Console.Write("\n");
             }
+        }
+        private static void HandleInput(ConsoleKeyInfo pressedKey, ref int pacmanX, ref int pacmanY, char[,] map)
+        {
+            int[] direction = GetDirection(pressedKey);
+            int nextPacmanPositionX= pacmanX + direction[0];
+            int nextPacmanPositionY=pacmanY+ direction[1];
+            if (map[nextPacmanPositionX,nextPacmanPositionY]==' ')
+            {
+                pacmanX = nextPacmanPositionX;
+                pacmanY = nextPacmanPositionY;
+            }
+        }
+        private static int[] GetDirection(ConsoleKeyInfo pressedKey)
+        {
+
+            int[] direction = { 0, 0 };
+            if (pressedKey.Key == ConsoleKey.UpArrow) { direction[1] = -1; }
+            else if (pressedKey.Key == ConsoleKey.DownArrow) { direction[1] = 1; }
+            else if (pressedKey.Key == ConsoleKey.LeftArrow) { direction[0] = -1; }
+            else if (pressedKey.Key == ConsoleKey.RightArrow) { direction[0] = 1; }
+            return direction;
         }
 #endif
     }
