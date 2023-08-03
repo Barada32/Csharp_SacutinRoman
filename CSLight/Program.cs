@@ -1,11 +1,13 @@
 ﻿//#define COLLECTION_LIST_1
 //#define QUEUE_1
-#define STACK_1
+//#define STACK_1
+#define DICTIONARY_1
 
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -66,10 +68,24 @@ Stack<int> stack = new Stack<int>();
             stack.Push(4);
             stack.Push(5);
 
-            foreach (var i in stack) {Console.WriteLine(stack); }
+            foreach (var i in stack) { Console.WriteLine(stack); }
             
 
             while (stack.Count > 0) { Console.WriteLine("следующее число в стеке "+stack.Pop()); }
+#endif
+#if DICTIONARY_1
+            //5_45
+            Dictionary<string, string> countriesCapitals = new Dictionary<string, string>();
+            countriesCapitals.Add("Австралия", "Канбера");
+            countriesCapitals.Add("Турция", "Анкара");
+            countriesCapitals.Add("Швейцария", "Берн");
+            foreach(var country in countriesCapitals)
+            {
+                
+                Console.Write($"Cтолица - {country.Value}, ");
+                Console.WriteLine($"Страна - " + country.Key);
+            }
+
 #endif
 
         }
