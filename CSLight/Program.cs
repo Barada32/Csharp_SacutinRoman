@@ -283,6 +283,14 @@ namespace CSLight
             char[,] map = ReadMap("map.txt");
 
             ConsoleKeyInfo pressedKey = new ConsoleKeyInfo('w', ConsoleKey.W, false, false, false);
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    pressedKey = Console.ReadKey();
+                }
+
+            });
 
             int pacmanX = 1;
             int pacmanY = 1;
@@ -290,23 +298,26 @@ namespace CSLight
             while (true)
             {
                 Console.Clear();
+                
+                HandleInput(pressedKey, ref pacmanX, ref pacmanY, map, ref score);
                 Console.ForegroundColor = ConsoleColor.Blue;
                 DrawMap(map);
+
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.SetCursorPosition(pacmanX, pacmanY);
-
                 Console.Write("@");
 
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.SetCursorPosition(64, 1);
                 Console.Write($"Score: {score}");
-                pressedKey = Console.ReadKey();
 
-                HandleInput(pressedKey, ref pacmanX, ref pacmanY, map,ref  score);
+                Thread.Sleep(1000);
+
+                
 
             }
 
-            //5_25
+            //5_28
 
 #endif
 
@@ -349,24 +360,24 @@ namespace CSLight
                 Console.Write("\n");
             }
         }
-        private static void HandleInput(ConsoleKeyInfo pressedKey, ref int pacmanX, ref int pacmanY, char[,] map,ref int score)
+        private static void HandleInput(ConsoleKeyInfo pressedKey, ref int pacmanX, ref int pacmanY, char[,] map, ref int score)
         {
             int[] direction = GetDirection(pressedKey);
             int nextPacmanPositionX = pacmanX + direction[0];
             int nextPacmanPositionY = pacmanY + direction[1];
 
-            char nextCell= map[nextPacmanPositionX, nextPacmanPositionY];
-            if (nextCell == ' '|| nextCell=='.')
+            char nextCell = map[nextPacmanPositionX, nextPacmanPositionY];
+            if (nextCell == ' ' || nextCell == '.')
             {
                 pacmanX = nextPacmanPositionX;
                 pacmanY = nextPacmanPositionY;
-                if (nextCell == '.') 
+                if (nextCell == '.')
                 {
                     score++;
                     map[nextPacmanPositionX, nextPacmanPositionY] = ' ';
                 }
             }
-            
+
         }
         private static int[] GetDirection(ConsoleKeyInfo pressedKey)
         {
