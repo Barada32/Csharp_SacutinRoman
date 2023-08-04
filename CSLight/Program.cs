@@ -1,7 +1,8 @@
 ﻿//#define COLLECTION_LIST_1
 //#define QUEUE_1
 //#define STACK_1
-#define DICTIONARY_1
+//#define DICTIONARY_1
+#define OOP_1
 
 
 using System;
@@ -74,7 +75,7 @@ Stack<int> stack = new Stack<int>();
             while (stack.Count > 0) { Console.WriteLine("следующее число в стеке "+stack.Pop()); }
 #endif
 #if DICTIONARY_1
-            //5_45
+            //5_52
             Dictionary<string, string> countriesCapitals = new Dictionary<string, string>();
             countriesCapitals.Add("Австралия", "Канбера");
             countriesCapitals.Add("Турция", "Анкара");
@@ -88,6 +89,49 @@ Stack<int> stack = new Stack<int>();
 
 #endif
 
+#if OOP_1
+
+            Car ferrari = new Car();
+
+            ferrari.Name = "F40";
+            ferrari.Horsepower = 300;
+            ferrari.Age = 1;
+            ferrari.MaxSpeed = 120;
+            ferrari.ShowTechPassport();
+            ferrari.BecomeOlder(5, 50);
+            ferrari.ShowTechPassport();
+
+
+
+#endif
+
         }
+        class Car
+        {
+
+            public string Name;
+            public int Horsepower;
+            public int Age;
+            public float MaxSpeed;
+            public int Years = 5;
+
+            public void ShowTechPassport()
+            {
+              Console.WriteLine
+              ($"Название авто: {Name}\nКоличество лошадиных сил: {Horsepower}" +
+               $"\nВозраст авто: {Age}\nМаксимальная скорость: {MaxSpeed}" );
+
+
+            }
+            public  void BecomeOlder(int years,int runAwayHorses)
+            {
+                Age += this.Years + years;
+                Horsepower -= runAwayHorses;
+
+            }
+
+            //6_18
+        }
+
     }
 }
