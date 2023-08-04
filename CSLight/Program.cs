@@ -91,14 +91,11 @@ Stack<int> stack = new Stack<int>();
 
 #if OOP_1
 
+            Car ford = new Car("Ford", -200, 7, 180);
             Car ferrari = new Car();
 
-            ferrari.Name = "F40";
-            ferrari.Horsepower = 300;
-            ferrari.Age = 1;
-            ferrari.MaxSpeed = 120;
-            ferrari.ShowTechPassport();
-            ferrari.BecomeOlder(5, 50);
+            ford.ShowTechPassport();
+
             ferrari.ShowTechPassport();
 
 
@@ -113,17 +110,35 @@ Stack<int> stack = new Stack<int>();
             public int Horsepower;
             public int Age;
             public float MaxSpeed;
-            public int Years = 5;
+            public int Years = 1;
+
+
+            public Car(string name, int horsepower, int age, float maxSpeed)
+            {
+                if (horsepower < 0) { Horsepower = 1; }
+                else { Horsepower = horsepower; }
+                Name = name;
+                Age = age;
+                MaxSpeed = maxSpeed;
+
+            }
+            public Car()
+            {
+                Name = "Ferrari";
+                Horsepower = 500;
+                Age = 5;
+                MaxSpeed = 300;
+            }
 
             public void ShowTechPassport()
             {
-              Console.WriteLine
-              ($"Название авто: {Name}\nКоличество лошадиных сил: {Horsepower}" +
-               $"\nВозраст авто: {Age}\nМаксимальная скорость: {MaxSpeed}" );
+                Console.WriteLine
+                ($"Название авто: {Name}\nКоличество лошадиных сил: {Horsepower}" +
+                 $"\nВозраст авто: {Age}\nМаксимальная скорость: {MaxSpeed}");
 
 
             }
-            public  void BecomeOlder(int years,int runAwayHorses)
+            public void BecomeOlder(int years, int runAwayHorses)
             {
                 Age += this.Years + years;
                 Horsepower -= runAwayHorses;
