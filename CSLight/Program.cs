@@ -16,8 +16,8 @@ namespace CSLight
     {
         static void Main(string[] args)
         {
-            Console.InputEncoding = Encoding.Unicode;
-            Console.OutputEncoding = Encoding.Unicode;
+            //Console.InputEncoding = Encoding.Unicode;
+            //Console.OutputEncoding = Encoding.Unicode;
 #if TABLE_RESERVED_1
             bool isOpen = true;
 
@@ -82,8 +82,12 @@ namespace CSLight
 
 
 
+            Performer worker1 = new Performer("Веня");
+            Performer worker2 = new Performer("Роман");
 
-
+            Task[] tasks = { new Task(worker1, "Выкопать яму"), new Task(worker2, "Вывезти грунт") };
+            Board shedule = new Board(tasks);
+            shedule.ShowAllTasks();
 
 
 
@@ -96,7 +100,21 @@ namespace CSLight
         }
         class Board
         {
+            public Task[] Tasks;
 
+            public Board(Task[] tasks)
+            {
+                Tasks = tasks;
+            }
+
+            public void ShowAllTasks()
+            {
+                for(int i = 0;i<Tasks.Length;i++)
+                {
+                    Tasks[i].ShowInfo();
+                }
+
+            }
         }
         class Task
         {
@@ -108,7 +126,7 @@ namespace CSLight
             }
             public void ShowInfo()
             {
-                Console.WriteLine($"Ответственный: {Worker}\nОписание задачи: {Description}.\n ");
+                Console.WriteLine($"Ответственный: {Worker.Name}\nОписание задачи: {Description}.\n ");
             }
         }
 
