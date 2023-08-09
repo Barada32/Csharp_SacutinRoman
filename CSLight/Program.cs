@@ -16,8 +16,8 @@ namespace CSLight
     {
         static void Main(string[] args)
         {
-            //Console.InputEncoding = Encoding.Unicode;
-            //Console.OutputEncoding = Encoding.Unicode;
+            Console.InputEncoding = Encoding.Unicode;
+            Console.OutputEncoding = Encoding.Unicode;
 #if TABLE_RESERVED_1
             bool isOpen = true;
 
@@ -130,7 +130,7 @@ namespace CSLight
             }
         }
 
-        //6_37
+        //6_40
 
 #endif
     }
