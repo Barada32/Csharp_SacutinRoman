@@ -1,5 +1,6 @@
 ﻿//#define TABLE_RESERVED_1
-#define TACKER_1
+//#define TACKER_1
+#define WARRIOR_1
 
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,12 @@ using System.Xml.Serialization;
 
 namespace CSLight
 {
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.InputEncoding = Encoding.Unicode;
-            Console.OutputEncoding = Encoding.Unicode;
+	internal class Program
+	{
+		static void Main(string[] args)
+		{
+			Console.InputEncoding = Encoding.Unicode;
+			Console.OutputEncoding = Encoding.Unicode;
 #if TABLE_RESERVED_1
             bool isOpen = true;
 
@@ -128,10 +129,41 @@ namespace CSLight
             {
                 Console.WriteLine($"Ответственный: {Worker.Name}\nОписание задачи: {Description}.\n ");
             }
-        }
-
+        
+            }
         //6_40
 
 #endif
-    }
+
+#if WARRIOR_1
+
+
+
+
+
+		}
+		class Warrior
+		{
+			public int Health;
+			public int Armor;
+			public int Damage;
+			public void TakeDamage(int damage) { Health -= damage - Armor; }
+		}
+
+		class Knight : Warrior
+		{
+			public void Prey() { Armor += 2; }
+		}
+		class Barbarian : Warrior
+		{
+
+			public void Shout()
+			{
+				Armor -= 2;
+                Health += 10;
+			}
+		}
+
+#endif
+	}
 }
