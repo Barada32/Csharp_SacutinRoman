@@ -1,6 +1,8 @@
 ﻿//#define TABLE_RESERVED_1
 //#define TACKER_1
-#define WARRIOR_1
+//#define WARRIOR_1_NASLEDOVANIE
+//#define INCAPSULATION
+#define COLLECTION
 
 using System;
 using System.Collections.Generic;
@@ -135,35 +137,155 @@ namespace CSLight
 
 #endif
 
-#if WARRIOR_1
+#if WARRIOR_1_NASLEDOVANIE
 
 
+			Knight warrior1 = new Knight(200,10,10);
+            Barbarian warrior2 = new Barbarian(200,0,10,3);
+            warrior1.TakeDamage(100);
+            warrior2.TakeDamage(100);
 
-
-
-		}
+            Console.Write("Рыцарь: ");
+            warrior1.showInfo();
+            Console.Write("Варвар: ");
+            warrior2.showInfo();
+            //651
+        }
 		class Warrior
 		{
-			public int Health;
-			public int Armor;
-			public int Damage;
+			protected int Health;
+			protected int Armor;
+			protected int Damage;
 			public void TakeDamage(int damage) { Health -= damage - Armor; }
+			public Warrior(int health, int armor, int damage)
+			{
+				Health = health;
+				Armor = armor;
+				Damage = damage;
+
+			}
+            public void showInfo()
+            {
+                Console.WriteLine(Health);
+            }
 		}
 
 		class Knight : Warrior
 		{
 			public void Prey() { Armor += 2; }
+
+			public Knight(int health, int armor, int damage) : base(health, armor, damage) { }
+
+
 		}
 		class Barbarian : Warrior
 		{
-
+            
+			public Barbarian(int healt, int armor, int damage, int attackSpeed) : base(healt, armor, damage*attackSpeed) { }
 			public void Shout()
 			{
 				Armor -= 2;
-                Health += 10;
+				Health += 10;
 			}
 		}
 
+#endif
+
+#if INCAPSULATION
+
+
+			Render renderer = new Render();
+			Player player = new Player(55, 10);
+			renderer.Draw(player.X, player.Y);
+
+
+
+
+
+
+		}
+		class Render
+		{
+
+
+			public void Draw(int x, int y, char character = '@')
+			{
+				Console.CursorVisible = false;
+				Console.SetCursorPosition(x, y);
+				Console.Write(character);
+				Console.ReadKey(true);
+			}
+
+		}
+		class Player
+		{
+			private int _x;
+			private int _y;
+			public Player(int x, int y) { _x = x; _y = y; }
+			public int X
+			{
+				get { return _x; }
+
+				private set
+				{ 
+                    _x = value; 
+                }
+			}
+
+            public int Y { get; private set; }
+            
+
+
+
+			public int getPositionY() { return _y; }
+		}
+
+#endif
+
+#if COLLECTION
+
+
+
+
+            Cart cart = new Cart();
+            cart.ShowProducts();
+
+		}
+		class Cart
+		{
+			private List<Product> products = new List<Product>();
+
+			public Cart()
+			{
+				products.Add(new Product("Яблоко"));
+				products.Add(new Product("Банан"));
+				products.Add(new Product("Апельсин"));
+				products.Add(new Product("Груша"));
+			}
+
+			public void ShowProducts()
+			{
+                foreach (var product in products)
+                {
+                    Console.WriteLine(product.Name);
+
+                }
+
+			}
+
+		}
+
+
+
+		class Product
+		{
+			public string Name { get; private set; }
+			public Product(string name)
+			{
+				Name = name;
+			}
+
+		}
 #endif
 	}
 }
