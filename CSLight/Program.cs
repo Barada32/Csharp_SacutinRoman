@@ -273,6 +273,8 @@ namespace CSLight
 
 			}
 
+            //7_04
+
 		}
 
 
